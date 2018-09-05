@@ -1,0 +1,29 @@
+{
+  "modelName_pkl": "LSTM_Glove",
+  "id": ["id"],
+  "Ycol": ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"],
+  "Xcol": ["comment_text"],
+  "analyticSettings":
+  {
+    "preprocs": ["raw", "fillna", "comment_to_lower", "text_to_seq"],
+    "max_features": 100000,
+    "max_len": 150,
+    "embed_size": 50,
+    "valid_size": 0.1
+  },
+  "fitSettings":
+  {
+
+    "train_batch_size":128,
+    "test_batch_size": 1024,
+    "epochs": 4,
+    "callbacks": "True",
+    "best_model_path": "best_model.hdf5"
+  },
+  "taskName": "build",
+  "workDir": "./test",
+  "logDir": "./logs",
+  "trainPath": "./input/train.csv",
+  "testPath": "./input/test.csv",
+  "preWordEmbedPath": "./input/glove6b50d/glove.6B.50d.txt"
+}

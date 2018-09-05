@@ -1,0 +1,16 @@
+{
+  "modelName_pkl": "LSTM_Glove",
+  "id": ["id"],
+  "Ycol": ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"],
+  "Xcol": ["comment_text"],
+  "analyticSettings": {},
+  "fitSettings":
+  {
+    "test_batch_size": 1024,
+    "best_model_path": "best_model.hdf5"
+  },
+  "taskName": "predict",
+  "workDir": "./test",
+  "logDir": "./logs",
+  "testPath": "./input/test.csv"
+}
