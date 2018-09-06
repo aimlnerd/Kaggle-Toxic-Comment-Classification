@@ -78,17 +78,29 @@ class TextPreprocess(BaseEstimator):
         return df, {}
 
     def _text_to_seq_fit(self,train):
+        """
+        Standard keras preprocessing, to turn each comment into a list of word indexes of equal length (with truncation
+        or padding as needed) called word_index.
+        :param train:
+        :return:
+        """
         self.tk = Tokenizer(num_words=self.max_features,
                             filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\'\n', # I added \' it was not there by default 
                             lower=True,
                             split=" ",
                             char_level=False)
         self.tk.fit_on_texts(train["comment_text"])
+        # word_index - A dictionary of words and their uniquely assigned integers
         self.word_index = self.tk.word_index
         # v.important the values required for transform after fitting should be made as class variables (self) and not returned using return
         # _fit function doesnt return anything but _transform return df and dict (info)
 
     def _text_to_seq_transform(self, df):
+        """
+        Standard keras preprocessing, to convert list of word indexes to equal length using 0 padding.
+        :param df:
+        :return:
+        """
         df["comment_seq"] = self.tk.texts_to_sequences(df["comment_text"])
         x_df = pad_sequences(df["comment_seq"], maxlen=self.max_len)
         return x_df, {}

@@ -23,6 +23,11 @@ class WordEmbedProcess(BaseEstimator):
 
     @staticmethod
     def load_pretrainedwordembed(embedding_path):
+        """
+        Read the glove word vectors (space delimited strings) into a dictionary {word:vector}
+        :param embedding_path:
+        :return:
+        """
         pretrained_wordembed = {}
         with open(embedding_path, encoding='utf8') as f:
             for line in f:
@@ -34,6 +39,11 @@ class WordEmbedProcess(BaseEstimator):
 
     def fit_transform(self,pretrainedwordembed, word_index, **fit_params):
         """
+        if train word occur in glove use word embedding
+        else if train word doesnt occur in glove below are the possibilites 1. use word embedding for something 2. take average of word embedding 3. use a zero vector
+
+        Take only 1st max_features words from training dataset.
+
         Takes max_features number of features from training data and 
         get pretrained glove vectors for those max_features only
         ith index of embedding_matrix denotes ei
