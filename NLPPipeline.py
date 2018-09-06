@@ -103,32 +103,31 @@ class NLPPipline(BaseEstimator):
         return y_test_pred
 
 
-"""
-train_df = pd.read_csv('./input/train.csv')
-test_df = pd.read_csv('./input/test.csv')
 
-#x = train_df[["comment_text"]]
-#y = train_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]]
-
-nLPPipline = NLPPipline(
-                        ycol=["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"],
-                        xcol=["comment_text"],
-                        valid_size=0.1,
-                        preWordEmbedPath="./input/glove6b50d/glove.6B.50d.txt",
-                        splittype=["train_test"],
-                        preprocs=["raw", "fillna", "comment_to_lower", "text_to_seq"],
-                        max_features=100000,
-                        max_len=150,
-                        embed_size=50,
-                        train_batch_size=256,
-                        test_batch_size=1024,
-                        epochs=1,
-                        callbacks=True,
-                        best_model_path="best_model.hdf5"
-                        )
-
-nLPPipline.fit(train_df)
-y_test_pred = nLPPipline.predict(test_df)
-nLPPipline.get_pickable()
-"""
-        
+if __name__ == '__main__':
+    train_df = pd.read_csv('./input/train.csv')
+    test_df = pd.read_csv('./input/test.csv')
+    
+    #x = train_df[["comment_text"]]
+    #y = train_df[["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]]
+    
+    nLPPipline = NLPPipline(
+                            ycol=["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"],
+                            xcol=["comment_text"],
+                            valid_size=0.1,
+                            preWordEmbedPath="./input/glove6b50d/glove.6B.50d.txt",
+                            splittype=["train_test"],
+                            preprocs=["raw", "fillna", "comment_to_lower", "text_to_seq"],
+                            max_features=100000,
+                            max_len=150,
+                            embed_size=50,
+                            train_batch_size=256,
+                            test_batch_size=1024,
+                            epochs=1,
+                            callbacks=True,
+                            best_model_path="best_model.hdf5"
+                            )
+    
+    nLPPipline.fit(train_df)
+    y_test_pred = nLPPipline.predict(test_df)
+    nLPPipline.get_pickable()
