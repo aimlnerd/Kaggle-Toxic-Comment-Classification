@@ -11,3 +11,4 @@ Run NLPPipeline.py to run the process
 - https://keras.io/callbacks/
 - https://stats.stackexchange.com/questions/233658/softmax-vs-sigmoid-function-in-logistic-classifier
 - https://medium.com/@thomasdecaux/build-a-spell-checker-with-word2vec-data-with-python-5438a9343afd
+- https://machinelearningmastery.com/return-sequences-and-return-states-for-lstms-in-keras/

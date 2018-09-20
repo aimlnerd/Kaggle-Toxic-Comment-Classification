@@ -16,7 +16,8 @@ def GRU_CNN_Model(embedding_matrix,
     inp = Input(shape = (input_shape,))
     x = Embedding(max_features, embed_size, weights = [embedding_matrix], trainable = False)(inp)
     x = SpatialDropout1D(rate=0.2)(x)
-
+    # return sequences return the hidden state output for each input time step.
+    # return state returns the hidden state output and cell state for the last input time step.
     x = Bidirectional(GRU(units=128, return_sequences=True))(x)
     x = Conv1D(64, kernel_size = 2, padding = "valid", kernel_initializer = "he_uniform")(x)
     avg_pool = GlobalAveragePooling1D()(x)
